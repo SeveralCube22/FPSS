@@ -3,6 +3,12 @@
 #include <algorithm>
 #include "utility.hpp"
 
+/*
+
+	TODO: 
+		1) Intersections now only work against XY plane. For 3D objects, have to handle sweep line for XZ and YZ plane as well
+*/
+
 namespace Utility {
 
 	namespace {
