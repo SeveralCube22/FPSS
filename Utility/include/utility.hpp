@@ -1,5 +1,10 @@
 #pragma once
 
+#include <map>
+#include <queue>
+#include "event.hpp"
+#include "edge.hpp"
+
 namespace Utility {
 
 	namespace {

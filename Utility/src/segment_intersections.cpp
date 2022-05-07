@@ -1,11 +1,7 @@
 
-#include <map>
 #include <vector>
-#include <queue>
 #include <algorithm>
 #include "utility.hpp"
-#include "edge.hpp"
-#include "event.hpp"
 
 namespace Utility {
 
@@ -21,7 +17,7 @@ namespace Utility {
 				status.erase(it);
 			}
 
-			
+			// handle intersections
 
 			std::set<Edge> interior;
 			for (Edge e : containedP)
@@ -34,7 +30,12 @@ namespace Utility {
 			for (Edge e : interior)
 				status.emplace(e, 0);
 
-			if(upper.size() == 0 && interior.size() == 0)
+			if (upper.size() == 0 && interior.size() == 0) {
+
+			}
+			else {
+
+			}
 		}
 	}
 

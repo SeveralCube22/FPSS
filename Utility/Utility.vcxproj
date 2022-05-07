@@ -149,6 +149,7 @@
     <ClInclude Include="include\vertex.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\segment_intersections.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
