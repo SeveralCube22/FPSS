@@ -4,7 +4,6 @@
 #include "utility.hpp"
 
 /*
-
 	TODO: 
 		1) Intersections now only work against XY plane. For 3D objects, have to handle sweep line for XZ and YZ plane as well
 */
@@ -36,11 +35,16 @@ namespace Utility {
 			for (Edge e : interior)
 				status.emplace(e, 0);
 
+			const Edge& leftNeighbor = status.lower_bound(point)->first;
+			const Edge& rightNeighbor = status.upper_bound(point)->first;
+			
 			if (upper.size() == 0 && interior.size() == 0) {
 
 			}
 			else {
-
+				auto range = status.equal_range(point);
+				const Edge& leftMost = range.first->first;
+				const Edge& rightMost = range.second->first;
 			}
 		}
 	}

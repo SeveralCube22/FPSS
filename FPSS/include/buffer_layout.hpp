@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GL\glew.h>
+#include <glad\glad.h>
 #include <vector>
 
 struct LayoutElement { // index of layout element is controlled by vertex array

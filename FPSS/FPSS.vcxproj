@@ -47,11 +47,6 @@
     <None Include="res\shaders\glass.glsl" />
     <None Include="res\shaders\paint.glsl" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Voronoi\Voronoi.vcxproj">
-      <Project>{d419a4f4-db64-40b8-8cc3-ce69723c19c9}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -107,25 +102,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\manam\Desktop\glew-2.1.0\include;C:\Users\manam\Desktop\glfw-3.3.6.bin.WIN64\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\src\CGAL-5.4\include;$(IncludePath);$(SolutionDir)include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\manam\Desktop\glew-2.1.0\include;C:\Users\manam\Desktop\glfw-3.3.6.bin.WIN64\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\src\CGAL-5.4\include;$(IncludePath);$(SolutionDir)include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\manam\Desktop\assimp\include\assimp;C:\Users\manam\Desktop\glm;$(SolutionDir)include;C:\Users\manam\Desktop\glew-2.1.0\include;C:\Users\manam\Desktop\glfw-3.3.6.bin.WIN64\include;C:\Users\manam\Desktop\Repo\FPSS\Voronoi\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\src\CGAL-5.4\include;$(IncludePath);$(SolutionDir)include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\manam\Desktop\glew-2.1.0\include;C:\Users\manam\Desktop\glfw-3.3.6.bin.WIN64\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\src\CGAL-5.4\include;$(IncludePath);$(SolutionDir)include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
@@ -171,8 +166,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\manam\Desktop\glfw-3.3.6.bin.WIN64\lib-vc2019;C:\Users\manam\Desktop\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

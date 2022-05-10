@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <set>
+#include "edge.hpp"
 
 enum EventType {
 	UPPER,

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GL\glew.h>
+#include <glad\glad.h>
 #include <vector>
 #include "buffer.hpp"
 #include "buffer_layout.hpp"
