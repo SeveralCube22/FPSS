@@ -1,36 +1,9 @@
-﻿  buffer.hpp
-  buffer_layout.cpp
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\buffer_layout.cpp(4,72): warning C4312: 'type cast': conversion from 'unsigned int' to 'void *' of greater size
-  building.cpp
+﻿  main.cpp
 C:\Users\manam\Desktop\Repo\FPSS\FPSS\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\building.cpp(20,104): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  player.cpp
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\player.cpp(33,32): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\player.cpp(36,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  main.cpp
-C:\src\CGAL-5.4\include\CGAL\Installation\internal\enable_third_party_libraries.h(30,13): warning C4068: unknown pragma 'CGAL_WARNING'
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(137,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(138,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(139,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(142,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(143,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  mesh.cpp
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\mesh.cpp(11,48): warning C4244: 'argument': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\mesh.cpp(12,48): warning C4244: 'argument': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\mesh.cpp(13,48): warning C4244: 'argument': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
-  model.cpp
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\model.cpp(34,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\model.cpp(63,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\model.cpp(86,36): warning C4101: 'oor': unreferenced local variable
-  shader.cpp
-  vertex_array.cpp
-  Generating Code...
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(121,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(122,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(123,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(126,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(127,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
      Creating library C:\Users\manam\Desktop\Repo\FPSS\FPSS\bin\Debug\x64\FPSS.lib and object C:\Users\manam\Desktop\Repo\FPSS\FPSS\bin\Debug\x64\FPSS.exp
   FPSS.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\FPSS\bin\Debug\x64\FPSS.exe
