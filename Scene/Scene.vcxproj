@@ -151,11 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\root_node.hpp" />
+    <ClInclude Include="include\scene.hpp" />
     <ClInclude Include="include\scene_node.hpp" />
     <ClInclude Include="include\scene_node_interface.hpp" />
     <ClInclude Include="include\scene_node_properties.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\root_node.cpp" />
+    <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\scene_node.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

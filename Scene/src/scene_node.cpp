@@ -1,4 +1,5 @@
 #include "scene_node.hpp"
+#include "scene.hpp"
 
 void SceneNode::setTransform(const glm::mat4x4* to, const glm::mat4x4* from) {
 	properties.toWorld = *to;
@@ -8,7 +9,7 @@ void SceneNode::setTransform(const glm::mat4x4* to, const glm::mat4x4* from) {
 		properties.fromWorld = glm::inverse(*to);
 }
 
-void SceneNode::onUpdate(const Scene& scene, float delta) {
+void SceneNode::onUpdate(Scene& scene, float delta) {
 	for (ISceneNode* child : children)
 		child->onUpdate(scene, delta);
 }
@@ -18,22 +19,22 @@ void SceneNode::onRestore(const Scene& scene) {
 		child->onRestore(scene);
 }
 
-void SceneNode::preRender(const Scene& scene) {
+void SceneNode::preRender(Scene& scene) {
 	scene.pushMatrix(properties.toWorld);
 }
 
-void SceneNode::postRender(const Scene& scene) {
+void SceneNode::postRender(Scene& scene) {
 	scene.popMatrix();
 }
 
-void SceneNode::renderChildren(const Scene& scene) {
+void SceneNode::renderChildren(Scene& scene) {
 	for (ISceneNode* child : children) {
+		child->preRender(scene);
 		if (child->isVisible(scene)) {
-			child->preRender(scene);
 			child->render(scene);
 			child->renderChildren(scene);
-			child->postRender(scene);
 		}
+		child->postRender(scene);
 	}
 }
 
@@ -42,7 +43,7 @@ bool SceneNode::addChild(ISceneNode* node) {
 	return res.second;
 }
 
-bool SceneNode::removeChild(int actorId) {
+bool SceneNode::removeChild(unsigned int actorId) { // possible O(log n) removal?
 	for (ISceneNode* node : children) {
 		if (node->getProperties()->actorId == actorId) {
 			children.erase(node);
@@ -50,4 +51,10 @@ bool SceneNode::removeChild(int actorId) {
 		}
 	}
 	return false;
+}
+
+SceneNode::~SceneNode() {
+	parent->removeChild(properties.actorId);
+	for (ISceneNode* child : children)
+		delete child;
 }

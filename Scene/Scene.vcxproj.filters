@@ -24,9 +24,21 @@
     <ClInclude Include="include\scene_node_properties.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\scene.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\root_node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\scene_node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\root_node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
