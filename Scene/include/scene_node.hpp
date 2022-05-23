@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <set>
 #include "scene_node_interface.hpp"
 #include "scene_node_properties.hpp"
 
@@ -8,7 +8,7 @@ class SceneNode : public ISceneNode {
 	friend class Scene;
 private:
 	ISceneNode* parent;
-	std::vector<ISceneNode*> children;
+	std::set<ISceneNode*> children;
 	SceneNodeProperties properties;
 
 public:
@@ -26,7 +26,7 @@ public:
 
 	virtual void preRender(const Scene& scene);
 	virtual void isVisible(const Scene& scene) = 0;
-	virtual void render(const Scene& scene);
+	virtual void render(const Scene& scene) = 0;
 	virtual void renderChildren(const Scene& scene);
 	virtual void postRender(const Scene& scene);
 

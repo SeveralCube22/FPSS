@@ -28,18 +28,26 @@ void SceneNode::postRender(const Scene& scene) {
 
 void SceneNode::renderChildren(const Scene& scene) {
 	for (ISceneNode* child : children) {
-		child->preRender(scene);
-		child->render(scene);
-		child->renderChildren(scene);
-		child->postRender(scene);
+		if (child->isVisible(scene)) {
+			child->preRender(scene);
+			child->render(scene);
+			child->renderChildren(scene);
+			child->postRender(scene);
+		}
 	}
 }
 
 bool SceneNode::addChild(ISceneNode* node) {
-	children.push_back(node);
-	return true;
+	auto res = children.emplace(node);
+	return res.second;
 }
 
 bool SceneNode::removeChild(int actorId) {
-
+	for (ISceneNode* node : children) {
+		if (node->getProperties()->actorId == actorId) {
+			children.erase(node);
+			return true;
+		}
+	}
+	return false;
 }
