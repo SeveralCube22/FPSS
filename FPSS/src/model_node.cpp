@@ -8,8 +8,19 @@ void ModelNode::preRender(Scene& scene) {
 	SceneNode::preRender(scene);
 
 	std::shared_ptr<Model> m = scene.getModel(objPath);
-	if (!m) 
-		scene.loadModel(objPath, std::make_shared<Model>(objPath, shaders));
+	if (!m) {
+		m = std::make_shared<Model>(objPath, shaders);
+		scene.addModel(objPath, m);
+		BufferLayout mLayout;
+
+		for (int i = 0; i < 4; i++) // per instance vertex attrib layout
+			mLayout.addElement(4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), sizeof(glm::vec4) * i, 1);
+
+		for (Mesh mesh : m->getMeshes()) {
+			VertexArray& vao = mesh.getVAO();
+			vao.addBufferLayout({ modelBuffer }, { mLayout });
+		}
+	}
 }
 
 void ModelNode::render(Scene& scene) {
@@ -21,15 +32,17 @@ void ModelNode::render(Scene& scene) {
 		unsigned int pvId = shader.getUniformLocation("PV");
 		glUniformMatrix4fv(pvId, 1, GL_FALSE, glm::value_ptr(pv[0]));
 
+		
+
 		mesh.setMesh(); // mesh will bind vertices, indices, and textures
-		glDrawElements(GL_TRIANGLES, mesh.getIndicesSize(), GL_UNSIGNED_INT, (void*)0);
+		glDrawElementsInstanced(GL_TRIANGLES, mesh.getIndicesSize(), GL_UNSIGNED_INT, (void*)0, 1); // draw the only one model
 		
 		mesh.reset();
 		shader.unbind();
 	}
 }
 
-ModelNode ModelNode::readJSON(const rapidjson::Value& object, ISceneNode* parent) {
+ModelNode* ModelNode::readJSON(const rapidjson::Value& object) {
 	unsigned int actorId = object["actorId"].GetUint();
 	std::string name = object["name"].GetString();
 	std::string objPath = object["objPath"].GetString();
@@ -37,7 +50,7 @@ ModelNode ModelNode::readJSON(const rapidjson::Value& object, ISceneNode* parent
 	std::map<std::string, Shader> shaders = getShaders(object["shaders"]);
 	glm::mat4x4 to = getTransform(object["transform"]);
 
-	return ModelNode(actorId, name, renderPass, to, parent, objPath, shaders);
+	return new ModelNode(actorId, name, renderPass, to, objPath, shaders);
 }
 
 RenderPass ModelNode::getRenderPass(const std::string& pass) {

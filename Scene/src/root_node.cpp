@@ -1,14 +1,17 @@
 #include "root_node.hpp"
+#include <iostream>
 
-RootNode::RootNode() : SceneNode(0, "Root", RenderPass_0, &(const glm::mat4x4&) glm::mat4x4(1.0f), nullptr) {
+RootNode::RootNode() : SceneNode(0, "Root", RenderPass_0, &(const glm::mat4x4&) glm::mat4x4(1.0f)) {
 	glm::mat4x4 identity(1.0f);
-	SceneNode* staticGroup = new SceneNode(UINT_MAX, "Static", RenderPass_Static, &identity, this);
-	SceneNode* dynamicGroup = new SceneNode(UINT_MAX, "Dynamic", RenderPass_Dynamic, &identity, this);
+	SceneNode* staticGroup = new SceneNode(UINT_MAX, "Static", RenderPass_Static, &identity);
+	SceneNode* dynamicGroup = new SceneNode(UINT_MAX, "Dynamic", RenderPass_Dynamic, &identity);
 
+	staticGroup->setParent(this);
+	dynamicGroup->setParent(this);
 
 	children.reserve(RenderPass_Last);
-	children[RenderPass_Static] = staticGroup;
-	children[RenderPass_Dynamic] = dynamicGroup;
+	children.push_back(staticGroup); // static group at pos RenderPass_Static
+	children.push_back(dynamicGroup); // dynamic group at pos RenderPass_Dynamic
 }
 
 bool RootNode::addChild(ISceneNode* node) {

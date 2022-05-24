@@ -27,7 +27,7 @@ bool Scene::removeChild(unsigned int actorId) {
 	return false;
 }
 
-void Scene::onRender() {
+void Scene::Render() {
 	if (root) {
 		root->preRender(*this);
 		root->renderChildren(*this);
@@ -35,17 +35,24 @@ void Scene::onRender() {
 	}
 }
 
-void Scene::onUpdate(float delta) {
+void Scene::Update(float delta) {
 	if (root) 
 		root->onUpdate(*this, delta);
 }
 
 void Scene::pushMatrix(const glm::mat4x4& mat) {
-	const glm::mat4x4& top = transformations.back();
-	transformations.push_back(top * mat);
+	if (transformations.empty())
+		transformations.push_back(mat);
+	else {
+		const glm::mat4x4& top = transformations.back();
+		transformations.push_back(top * mat);
+	}
 }
 
 const glm::mat4x4& Scene::popMatrix() {
+	if (transformations.empty())
+		return glm::mat4x4(1.0f);
+
 	const glm::mat4x4& top = transformations.back();
 	transformations.pop_back();
 	return top;

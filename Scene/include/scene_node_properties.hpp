@@ -25,5 +25,7 @@ private:
 	RenderPass renderPass;
 
 public:
+	unsigned int getActorId() const { return actorId; }
 	RenderPass getRenderPass() const { return renderPass; }
+	const glm::mat4x4& getTransform() const { return toWorld; }
 };

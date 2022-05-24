@@ -9,6 +9,10 @@ void SceneNode::setTransform(const glm::mat4x4* to, const glm::mat4x4* from) {
 		properties.fromWorld = glm::inverse(*to);
 }
 
+void SceneNode::setParent(ISceneNode* parent) {
+	this->parent = parent;
+}
+
 void SceneNode::onUpdate(Scene& scene, float delta) {
 	for (ISceneNode* child : children)
 		child->onUpdate(scene, delta);
@@ -34,7 +38,8 @@ void SceneNode::renderChildren(Scene& scene) {
 }
 
 bool SceneNode::addChild(ISceneNode* node) {
-	if (std::find(children.begin(), children.end(), node) != children.end()) {
+	if (std::find(children.begin(), children.end(), node) == children.end()) {
+		node->setParent(this);
 		children.push_back(node);
 		return true;
 	}
@@ -50,7 +55,9 @@ bool SceneNode::removeChild(unsigned int actorId) {
 		}
 	}
 	if (index != -1) {
+		ISceneNode* child = children[index];
 		children.erase(children.begin() + index);
+		delete child;
 		return true;
 	}
 	return false;

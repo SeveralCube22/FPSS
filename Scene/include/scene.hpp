@@ -22,8 +22,8 @@ public:
 	bool addChild(unsigned int actorId, ISceneNode* node);
 	bool removeChild(unsigned int actorId);
 
-	void onRender();
-	void onUpdate(float delta);
+	void Render();
+	void Update(float delta);
 
 	void setPVMatrix(const glm::mat4x4& pv) { this->PV = pv; }
 	const glm::mat4x4& getPVMatrix() { return PV; }
@@ -31,7 +31,7 @@ public:
 	void pushMatrix(const glm::mat4x4& mat);
 	const glm::mat4x4& popMatrix();
 
-	void loadModel(std::string objPath, std::shared_ptr<Model> m) { loadedModels.emplace(objPath, m); }
+	void addModel(std::string objPath, std::shared_ptr<Model> m) { loadedModels.emplace(objPath, m); }
 	std::shared_ptr<Model> getModel(std::string objPath);
 
 	~Scene();

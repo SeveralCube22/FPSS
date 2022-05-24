@@ -55,6 +55,7 @@ const int WIDTH = 1920;
 const int HEIGHT = 1080;
 
 void processInput(GLFWwindow* window, Player& cam, float deltaTime); // process keyboard movement
+void loadScene(Scene& scene, const std::string& scenePath); // load scene file
 
 int main(void)
 {
@@ -107,6 +108,8 @@ int main(void)
     glm::mat4 projection = glm::perspective(45.0f, WIDTH / (float)HEIGHT, 1.0f, 1000.0f);
 
     Scene scene;
+    loadScene(scene, "res/scene/world.json");
+
     /* Loop until the user closes the window */
     while(!glfwWindowShouldClose(window))
     {
@@ -136,6 +139,7 @@ int main(void)
         glm::mat4x4 view = player.lookAt();
         glm::mat4x4 pv = projection * view;
         scene.setPVMatrix(pv);
+        scene.Render();
       
         /* Poll for and process events */
         glfwPollEvents();
@@ -168,6 +172,7 @@ void loadScene(Scene& scene, const std::string& scenePath) {
     doc.ParseStream(isw);
 
     for (rapidjson::Value& model : doc["model"].GetArray()) {
-        ModelNode m = ModelNode::readJSON(model);
+        ModelNode* m = ModelNode::readJSON(model);
+        scene.addChild(m->getProperties()->getActorId(), m);
     }
 }

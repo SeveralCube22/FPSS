@@ -1,15 +1,12 @@
-﻿  building.cpp
+﻿  main.cpp
 C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\building.cpp(20,104): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(124,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(125,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(126,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(129,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(130,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   model_node.cpp
 C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  main.cpp
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(121,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(122,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(123,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(126,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(127,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating Code...
      Creating library C:\Users\manam\Desktop\Repo\FPSS\bin\Debug\x64\FPSS.lib and object C:\Users\manam\Desktop\Repo\FPSS\bin\Debug\x64\FPSS.exp
   FPSS.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\bin\Debug\x64\FPSS.exe
