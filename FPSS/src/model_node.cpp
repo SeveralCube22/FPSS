@@ -18,7 +18,7 @@ void ModelNode::preRender(Scene& scene) {
 		mLayout.addElement(4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), sizeof(glm::vec4) * i, 1);
 
 	for (Mesh mesh : m->getMeshes()) {
-		VertexArray& vao = mesh.getVAO();
+		VertexArray& vao = mesh.getVAO(); // this vao will hold multiple model buffers. Need further abstraction.
 		vao.addBufferLayout({ modelBuffer }, { mLayout });
 	}
 }
