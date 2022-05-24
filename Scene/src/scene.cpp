@@ -1,8 +1,8 @@
 #include "scene.hpp"
 
 
-Scene::Scene(const std::string& scenePath) {
-	this->loadScene(scenePath);
+Scene::Scene() {
+	root = new RootNode();
 }
 
 ISceneNode* Scene:: findActor(unsigned int actorId) {
@@ -49,6 +49,11 @@ const glm::mat4x4& Scene::popMatrix() {
 	const glm::mat4x4& top = transformations.back();
 	transformations.pop_back();
 	return top;
+}
+
+std::shared_ptr<Model> Scene::getModel(std::string objPath) {
+	auto it = loadedModels.find(objPath);
+	return it == loadedModels.end() ? nullptr : it->second;
 }
 
 Scene::~Scene() {

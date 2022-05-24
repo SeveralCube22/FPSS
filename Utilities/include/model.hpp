@@ -36,5 +36,5 @@ public:
 		dir = objPath.substr(0, objPath.find_last_of('/'));
 		this->loadModel();
 	}
-	virtual void draw() = 0;
+	std::vector<Mesh>& getMeshes() { return meshes; }
 };

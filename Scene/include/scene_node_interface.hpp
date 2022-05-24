@@ -14,7 +14,7 @@ public:
 
 	virtual void preRender(Scene& scene) = 0; // any things to to do before rendering
 	virtual bool isVisible(const Scene& scene) const = 0; // if this node is visible or not
-	virtual void render(const Scene& scene) = 0; // renders this node itself.
+	virtual void render(Scene& scene) = 0; // renders this node itself.
 	virtual void renderChildren(Scene& scene) = 0; // renders this node's children
 	virtual void postRender(Scene& scene) = 0; // any things to do after renderering
 

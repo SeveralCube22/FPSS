@@ -25,7 +25,7 @@ public:
 
 	virtual void preRender(Scene& scene) override;
 	virtual bool isVisible(const Scene& scene) const { return false; };
-	virtual void render(const Scene& scene) override {} // for now do nothing for render. in the future, all scene nodes can have some sort of icons?
+	virtual void render(Scene& scene) override {} // for now do nothing for render. in the future, all scene nodes can have some sort of icons?
 	virtual void renderChildren(Scene& scene) override;
 	virtual void postRender(Scene& scene) override;
 

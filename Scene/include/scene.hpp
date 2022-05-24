@@ -4,19 +4,19 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include <string>
+#include <model.hpp>
 #include "root_node.hpp"
 
 class Scene {
 private:
 	std::map<unsigned int, ISceneNode*> actors;
+	std::map<std::string, std::shared_ptr<Model>> loadedModels;
 	std::vector<glm::mat4x4> transformations;
 	glm::mat4x4 PV;
 	RootNode* root;
 
-	void loadScene(const std::string& scenePath);
-
 public:
-	Scene(const std::string& scenePath);
+	Scene();
 
 	ISceneNode* findActor(unsigned int actorId);
 	bool addChild(unsigned int actorId, ISceneNode* node);
@@ -30,6 +30,9 @@ public:
 
 	void pushMatrix(const glm::mat4x4& mat);
 	const glm::mat4x4& popMatrix();
+
+	void loadModel(std::string objPath, std::shared_ptr<Model> m) { loadedModels.emplace(objPath, m); }
+	std::shared_ptr<Model> getModel(std::string objPath);
 
 	~Scene();
 };
