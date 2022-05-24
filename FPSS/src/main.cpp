@@ -10,6 +10,10 @@
 #include <glm\gtc\type_ptr.hpp>
 #include <assimp\Importer.hpp>
 
+#include <rapidjson/document.h>
+#include <rapidjson/istreamwrapper.h>
+#include <fstream>
+
 #include "buffer.hpp"
 #include "buffer_layout.hpp"
 #include "vertex_array.hpp"
@@ -99,7 +103,9 @@ int main(void)
     float prevX = 300;
     float prevY = 240;
     float prevTime = 0;
-    
+
+    glm::mat4 projection = glm::perspective(45.0f, WIDTH / (float)HEIGHT, 1.0f, 1000.0f);
+
     Scene scene;
     /* Loop until the user closes the window */
     while(!glfwWindowShouldClose(window))
@@ -127,7 +133,9 @@ int main(void)
         processInput(window, player, delta);
         //player.calculateVertPos(delta);
 
-     
+        glm::mat4x4 view = player.lookAt();
+        glm::mat4x4 pv = projection * view;
+        scene.setPVMatrix(pv);
       
         /* Poll for and process events */
         glfwPollEvents();
@@ -150,4 +158,16 @@ void processInput(GLFWwindow* window, Player& cam, float deltaTime) {
         cam.jump(50.0f);
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwDestroyWindow(window);
+}
+
+void loadScene(Scene& scene, const std::string& scenePath) {
+    std::ifstream ifs(scenePath);
+    rapidjson::IStreamWrapper isw(ifs);
+
+    rapidjson::Document doc;
+    doc.ParseStream(isw);
+
+    for (rapidjson::Value& model : doc["model"].GetArray()) {
+        ModelNode m = ModelNode::readJSON(model);
+    }
 }

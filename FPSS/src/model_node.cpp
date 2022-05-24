@@ -28,3 +28,37 @@ void ModelNode::render(Scene& scene) {
 		shader.unbind();
 	}
 }
+
+ModelNode ModelNode::readJSON(const rapidjson::Value& object, ISceneNode* parent) {
+	unsigned int actorId = object["actorId"].GetUint();
+	std::string name = object["name"].GetString();
+	std::string objPath = object["objPath"].GetString();
+	RenderPass renderPass = getRenderPass(object["renderPass"].GetString());
+	std::map<std::string, Shader> shaders = getShaders(object["shaders"]);
+	glm::mat4x4 to = getTransform(object["transform"]);
+
+	return ModelNode(actorId, name, renderPass, to, parent, objPath, shaders);
+}
+
+RenderPass ModelNode::getRenderPass(const std::string& pass) {
+	if (pass == "STATIC")
+		return RenderPass_Static;
+	else if (pass == "DYNAMIC")
+		return RenderPass_Dynamic;
+	else
+		throw std::string("INVALID RENDER PASS IN JSON");
+}
+
+std::map<std::string, Shader> ModelNode::getShaders(const rapidjson::Value& obj) {
+	std::map<std::string, Shader> shaders;
+	for (auto& m : obj.GetObject())
+		shaders.emplace(m.name.GetString(), Shader(m.value.GetString()));
+	return shaders;
+}
+
+glm::mat4x4 ModelNode::getTransform(const rapidjson::Value& arr) {
+	std::vector<float> vals;
+	for (auto& v : arr.GetArray())
+		vals.push_back(v.GetFloat());
+	return glm::make_mat4x4(&vals[0]);
+}

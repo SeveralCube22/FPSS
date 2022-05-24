@@ -9,7 +9,8 @@ class ISceneNode {
 public:
 	virtual const SceneNodeProperties* const getProperties() const = 0;
 	virtual void setTransform(const glm::mat4x4* toWorld, const glm::mat4x4* fromWorld=nullptr) = 0; // sets this node's transform.
-	
+	virtual glm::mat4x4& getTransform() = 0;
+
 	virtual void onUpdate(Scene& scene, float delta) = 0; // things to do according to some delta time.
 
 	virtual void preRender(Scene& scene) = 0; // any things to to do before rendering

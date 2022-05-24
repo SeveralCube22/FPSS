@@ -21,6 +21,8 @@ public:
 
 	virtual const SceneNodeProperties* const getProperties() const override { return &properties; }
 	virtual void setTransform(const glm::mat4x4* to, const glm::mat4x4* from) override;
+	virtual glm::mat4x4& getTransform() override { return properties.toWorld; }
+
 	virtual void onUpdate(Scene& scene, float delta) override;
 
 	virtual void preRender(Scene& scene) override;

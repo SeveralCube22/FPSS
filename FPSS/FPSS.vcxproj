@@ -19,16 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\building.cpp" />
     <ClCompile Include="src\model_node.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\building.hpp" />
     <ClInclude Include="include\model_node.hpp" />
     <ClInclude Include="include\player.hpp" />
-    <ClInclude Include="include\mass_hall.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\building.glsl" />
