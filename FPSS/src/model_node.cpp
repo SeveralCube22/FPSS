@@ -11,15 +11,15 @@ void ModelNode::preRender(Scene& scene) {
 	if (!m) {
 		m = std::make_shared<Model>(objPath, shaders);
 		scene.addModel(objPath, m);
-		BufferLayout mLayout;
+	}
+	BufferLayout mLayout;
 
-		for (int i = 0; i < 4; i++) // per instance vertex attrib layout
-			mLayout.addElement(4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), sizeof(glm::vec4) * i, 1);
+	for (int i = 0; i < 4; i++) // per instance vertex attrib layout
+		mLayout.addElement(4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), sizeof(glm::vec4) * i, 1);
 
-		for (Mesh mesh : m->getMeshes()) {
-			VertexArray& vao = mesh.getVAO();
-			vao.addBufferLayout({ modelBuffer }, { mLayout });
-		}
+	for (Mesh mesh : m->getMeshes()) {
+		VertexArray& vao = mesh.getVAO();
+		vao.addBufferLayout({ modelBuffer }, { mLayout });
 	}
 }
 
