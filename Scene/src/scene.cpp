@@ -21,6 +21,7 @@ bool Scene::removeChild(unsigned int actorId) {
 	if (it != actors.end()) {
 		it->second->getParent()->removeChild(actorId);
 		actors.erase(actorId);
+		delete it->second;
 		return true;
 	}
 	return false;
