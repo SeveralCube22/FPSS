@@ -15,9 +15,8 @@
 #include "vertex_array.hpp"
 #include "shader.hpp"
 #include "player.hpp"
-#include "building.hpp"
-#include "mass_hall.hpp"
-
+#include "scene.hpp"
+#include "model_node.hpp"
 
 // use Nvidia's drivers instead of Intel
 extern "C"
@@ -52,7 +51,6 @@ const int WIDTH = 1920;
 const int HEIGHT = 1080;
 
 void processInput(GLFWwindow* window, Player& cam, float deltaTime); // process keyboard movement
-std::vector<glm::mat4> setupBuildingModels(); // setup building model matrices
 
 int main(void)
 {
@@ -101,12 +99,8 @@ int main(void)
     float prevX = 300;
     float prevY = 240;
     float prevTime = 0;
-
-    glm::mat4 projection = glm::perspective(45.0f, WIDTH / (float) HEIGHT, 1.0f, 1000.0f);
- 
-    std::vector<glm::mat4> buildingModels = setupBuildingModels();
-    Building* build = new MassHall("res/objects/buildings/Mass_Hall/Mass_Hall.obj", buildingModels);
     
+    Scene scene;
     /* Loop until the user closes the window */
     while(!glfwWindowShouldClose(window))
     {
@@ -133,12 +127,7 @@ int main(void)
         processInput(window, player, delta);
         //player.calculateVertPos(delta);
 
-        glm::mat4 view = player.lookAt();
-        glm::mat4 PV = projection * view;
-
-        build->setPVMatrix(PV);
-
-        build->draw();
+     
       
         /* Poll for and process events */
         glfwPollEvents();
@@ -146,16 +135,6 @@ int main(void)
 
     glfwTerminate();
     return 0;
-}
-
-std::vector<glm::mat4> setupBuildingModels() {
-    std::vector<glm::mat4> matrices;
-    glm::mat4 curr = glm::mat4(1.0f);
-    for (int i = 0; i < 3; i++) {
-        matrices.push_back(curr);
-        curr = glm::translate(curr, glm::vec3(100.0f, 0.0f, 0.0f)); // Spacing buildings across X-axis
-    }
-    return matrices;
 }
 
 void processInput(GLFWwindow* window, Player& cam, float deltaTime) {
