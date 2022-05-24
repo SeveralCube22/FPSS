@@ -23,7 +23,6 @@ public:
 	bool removeChild(unsigned int actorId);
 
 	void onRender();
-	void onRestore();
 	void onUpdate(float delta);
 
 	void setPVMatrix(const glm::mat4x4& pv) { this->PV = pv; }

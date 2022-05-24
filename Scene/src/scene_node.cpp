@@ -14,11 +14,6 @@ void SceneNode::onUpdate(Scene& scene, float delta) {
 		child->onUpdate(scene, delta);
 }
 
-void SceneNode::onRestore(const Scene& scene) {
-	for (ISceneNode* child : children)
-		child->onRestore(scene);
-}
-
 void SceneNode::preRender(Scene& scene) {
 	scene.pushMatrix(properties.toWorld);
 }
@@ -39,22 +34,31 @@ void SceneNode::renderChildren(Scene& scene) {
 }
 
 bool SceneNode::addChild(ISceneNode* node) {
-	auto res = children.emplace(node);
-	return res.second;
+	if (std::find(children.begin(), children.end(), node) != children.end()) {
+		children.push_back(node);
+		return true;
+	}
+	return false;
 }
 
-bool SceneNode::removeChild(unsigned int actorId) { // possible O(log n) removal?
-	for (ISceneNode* node : children) {
-		if (node->getProperties()->actorId == actorId) {
-			children.erase(node);
-			return true;
+bool SceneNode::removeChild(unsigned int actorId) {
+	int index = -1;
+	for (int i = 0; i < children.size(); i++) {
+		if (children[i]->getProperties()->actorId == actorId) {
+			index = i;
+			break;
 		}
+	}
+	if (index != -1) {
+		children.erase(children.begin() + index);
+		return true;
 	}
 	return false;
 }
 
 SceneNode::~SceneNode() {
-	parent->removeChild(properties.actorId);
+	if (parent)
+		parent->removeChild(properties.actorId);
 	for (ISceneNode* child : children)
 		delete child;
 }

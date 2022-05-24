@@ -2,7 +2,7 @@
 
 
 Scene::Scene(const std::string& scenePath) {
-
+	this->loadScene(scenePath);
 }
 
 ISceneNode* Scene:: findActor(unsigned int actorId) {
@@ -17,21 +17,21 @@ bool Scene::addChild(unsigned int actorId, ISceneNode* node) {
 }
 
 bool Scene::removeChild(unsigned int actorId) {
-	actors.erase(actorId);
-	return root->removeChild(actorId);
+	auto it = actors.find(actorId);
+	if (it != actors.end()) {
+		it->second->getParent()->removeChild(actorId);
+		actors.erase(actorId);
+		return true;
+	}
+	return false;
 }
 
 void Scene::onRender() {
 	if (root) {
 		root->preRender(*this);
-		root->render(*this);
+		root->renderChildren(*this);
 		root->postRender(*this);
 	}
-}
-
-void Scene::onRestore() {
-	if (root)
-		root->onRestore(*this);
 }
 
 void Scene::onUpdate(float delta) {

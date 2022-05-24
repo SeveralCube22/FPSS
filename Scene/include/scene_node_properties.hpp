@@ -21,5 +21,9 @@ private:
 	std::string name;
 	glm::mat4x4 toWorld, fromWorld;
 	// AABB or sphere radius compononent
+
 	RenderPass renderPass;
+
+public:
+	RenderPass getRenderPass() const { return renderPass; }
 };
