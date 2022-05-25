@@ -68,7 +68,7 @@ void GLAPIENTRY MessageCallback(GLenum source,
         mode = "w";
     }
 
-    FILE* logFile = new FILE();
+    FILE* logFile = nullptr;
     auto err = fopen_s(&logFile, filePath->c_str(), mode.c_str());
    
     fprintf(logFile, "%s GL CALLBACK: %s type = 0x%x, message = %s\n", 
