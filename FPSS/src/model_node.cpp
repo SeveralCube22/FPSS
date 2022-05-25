@@ -11,15 +11,16 @@ void ModelNode::preRender(Scene& scene) {
 	if (!m) {
 		m = std::make_shared<Model>(objPath, shaders);
 		scene.addModel(objPath, m);
-	}
-	BufferLayout mLayout;
 
-	for (int i = 0; i < 4; i++) // per instance vertex attrib layout
-		mLayout.addElement(4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), sizeof(glm::vec4) * i, 1);
+		BufferLayout mLayout;
 
-	for (Mesh mesh : m->getMeshes()) {
-		VertexArray& vao = mesh.getVAO(); // this vao will hold multiple model buffers. Need further abstraction.
-		vao.addBufferLayout({ modelBuffer }, { mLayout });
+		for (int i = 0; i < 4; i++) // per instance vertex attrib layout
+			mLayout.addElement(4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), sizeof(glm::vec4) * i, 1);
+
+		for (Mesh mesh : m->getMeshes()) {
+			VertexArray& vao = mesh.getVAO();
+			vao.addBufferLayout({ modelBuffer }, { mLayout });
+		}
 	}
 }
 
@@ -31,8 +32,6 @@ void ModelNode::render(Scene& scene) {
 		shader.bind();
 		unsigned int pvId = shader.getUniformLocation("PV");
 		glUniformMatrix4fv(pvId, 1, GL_FALSE, glm::value_ptr(pv[0]));
-
-		
 
 		mesh.setMesh(); // mesh will bind vertices, indices, and textures
 		glDrawElementsInstanced(GL_TRIANGLES, mesh.getIndicesSize(), GL_UNSIGNED_INT, (void*)0, 1); // draw the only one model

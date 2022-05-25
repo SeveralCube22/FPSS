@@ -1,0 +1,11 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     Creating library C:\Users\manam\Desktop\Repo\FPSS\bin\Release\x64\FPSS.lib and object C:\Users\manam\Desktop\Repo\FPSS\bin\Release\x64\FPSS.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+C:\Users\manam\Desktop\Repo\FPSS\Scene\src\scene.cpp(54): warning C4172: returning address of local variable or temporary
+  All 1895 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  FPSS.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\bin\Release\x64\FPSS.exe

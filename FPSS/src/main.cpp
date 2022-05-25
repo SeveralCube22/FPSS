@@ -14,6 +14,10 @@
 #include <rapidjson/istreamwrapper.h>
 #include <fstream>
 
+#include <chrono>
+#include <sstream>
+#include <iomanip>
+
 #include "buffer.hpp"
 #include "buffer_layout.hpp"
 #include "vertex_array.hpp"
@@ -22,11 +26,15 @@
 #include "scene.hpp"
 #include "model_node.hpp"
 
+#include <vld.h>
+
 // use Nvidia's drivers instead of Intel
 extern "C"
 {
     __declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
 }
+
+std::string* filePath = nullptr;
 
 void GLAPIENTRY MessageCallback(GLenum source,
                                 GLenum type,
@@ -36,17 +44,38 @@ void GLAPIENTRY MessageCallback(GLenum source,
                                 const GLchar* message,
                                 const void* userParam) {
     
+    std::string severityStr;
     switch (severity) {
-        case GL_DEBUG_SEVERITY_HIGH:         std::cout << "Severity: high "; break;
-        case GL_DEBUG_SEVERITY_MEDIUM:       std::cout << "Severity: medium "; break;
-        case GL_DEBUG_SEVERITY_LOW:          std::cout << "Severity: low "; break;
-        case GL_DEBUG_SEVERITY_NOTIFICATION: std::cout << "Severity: notification "; break;
+        case GL_DEBUG_SEVERITY_HIGH:         severityStr = "Severity: high "; break;
+        case GL_DEBUG_SEVERITY_MEDIUM:       severityStr = "Severity: medium "; break;
+        case GL_DEBUG_SEVERITY_LOW:          severityStr = "Severity: low "; break;
+        case GL_DEBUG_SEVERITY_NOTIFICATION: severityStr = "Severity: notification "; break;
     }
 
-    fprintf(stderr, "GL CALLBACK: %s type = 0x%x, message = %s\n",
+    std::string mode = "a";
+    if (!filePath) {
+        auto now = std::chrono::system_clock::now();
+        std::time_t tt = std::chrono::system_clock::to_time_t(now);
+        std::tm tm;
+        ::gmtime_s(&tm, &tt);
+
+        std::stringstream ss;
+        ss << std::put_time(&tm, " %Y-%m-%d%H_%M_%S");
+
+        std::string formattedTime = ss.str();
+        formattedTime.erase(remove(formattedTime.begin(), formattedTime.end(), ' '), formattedTime.end());
+        filePath = new std::string("logs/" + formattedTime + ".txt");
+        mode = "w";
+    }
+
+    FILE* logFile = new FILE();
+    auto err = fopen_s(&logFile, filePath->c_str(), mode.c_str());
+   
+    fprintf(logFile, "%s GL CALLBACK: %s type = 0x%x, message = %s\n", 
+        severityStr.c_str(),
         (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
         type, message);
-
+    fclose(logFile);
     if(severity != GL_DEBUG_SEVERITY_LOW && severity != GL_DEBUG_SEVERITY_NOTIFICATION)
         __debugbreak();
 }
@@ -145,6 +174,7 @@ int main(void)
         glfwPollEvents();
     }
 
+    delete filePath;
     glfwTerminate();
     return 0;
 }

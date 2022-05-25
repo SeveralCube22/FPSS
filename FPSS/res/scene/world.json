@@ -11,30 +11,6 @@
 				"default": "res/shaders/building.glsl"
 			},
 			"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ]
-		}, 
-		{
-			"actorId": 2,
-			"name": "Mass_Hall",
-			"renderPass": "STATIC",
-			"objPath": "res/objects/buildings/Mass_Hall/Mass_Hall.obj",
-			"shaders": {
-				"glass": "res/shaders/glass.glsl",
-				"paint": "res/shaders/paint.glsl",
-				"default": "res/shaders/building.glsl"
-			},
-			"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 100, 0, 0, 1 ]
-		},
-		{
-			"actorId": 3,
-			"name": "Mass_Hall",
-			"renderPass": "STATIC",
-			"objPath": "res/objects/buildings/Mass_Hall/Mass_Hall.obj",
-			"shaders": {
-				"glass": "res/shaders/glass.glsl",
-				"paint": "res/shaders/paint.glsl",
-				"default": "res/shaders/building.glsl"
-			},
-			"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 200, 0, 0, 1 ]
 		}
 	]
 }

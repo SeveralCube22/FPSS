@@ -95,27 +95,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include</IncludePath>
+    <IncludePath>C:\src\Visual Leak Detector\include;C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(ProjectDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(ProjectDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include</IncludePath>
+    <IncludePath>C:\src\Visual Leak Detector\include;C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(ProjectDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(ProjectDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -127,8 +129,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\manam\Desktop\glfw-3.3.6.bin.WIN64\lib-vc2019;C:\Users\manam\Desktop\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\src\Visual Leak Detector\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);vld.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -145,8 +147,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\manam\Desktop\glfw-3.3.6.bin.WIN64\lib-vc2019;C:\Users\manam\Desktop\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -159,8 +161,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\src\Visual Leak Detector\lib\Win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);vld.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -177,8 +179,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\manam\Desktop\glfw-3.3.6.bin.WIN64\lib-vc2019;C:\Users\manam\Desktop\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

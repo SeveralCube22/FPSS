@@ -57,15 +57,14 @@ bool SceneNode::removeChild(unsigned int actorId) {
 	if (index != -1) {
 		ISceneNode* child = children[index];
 		children.erase(children.begin() + index);
-		delete child;
 		return true;
 	}
 	return false;
 }
 
 SceneNode::~SceneNode() {
-	if (parent)
-		parent->removeChild(properties.actorId);
 	for (ISceneNode* child : children)
 		delete child;
+	if (parent)
+		parent->removeChild(properties.actorId);
 }
