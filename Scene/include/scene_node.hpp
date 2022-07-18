@@ -26,13 +26,13 @@ public:
 
 	virtual void setParent(ISceneNode* parent);
 
-	virtual void onUpdate(Scene& scene, float delta) override;
+	virtual void onUpdate(float delta) override;
 
-	virtual void preRender(Scene& scene) override;
-	virtual bool isVisible(const Scene& scene) const { return false; };
-	virtual void render(Scene& scene) override {} // for now do nothing for render. in the future, all scene nodes can have some sort of icons?
-	virtual void renderChildren(Scene& scene) override;
-	virtual void postRender(Scene& scene) override;
+	virtual void preRender() override;
+	virtual bool isVisible() const { return false; };
+	virtual void render() override {} // for now do nothing for render. in the future, all scene nodes can have some sort of icons?
+	virtual void renderChildren() override;
+	virtual void postRender() override;
 
 	virtual bool addChild(ISceneNode* node) override;
 	virtual bool removeChild(unsigned int actorId) override;

@@ -25,9 +25,9 @@ public:
 		modelBuffer.addData(model.data(), 1 * sizeof(glm::mat4x4), GL_STATIC_DRAW);
 	}
 
-	virtual void preRender(Scene& scene) override;
-	virtual bool isVisible(const Scene& scene) const { return true; } // for now all meshes are visible
-	virtual void render(Scene& scene) override;
+	virtual void preRender() override;
+	virtual bool isVisible() const { return true; } // for now all meshes are visible
+	virtual void render() override;
 
 	static ModelNode* readJSON(const rapidjson::Value& object);
 };

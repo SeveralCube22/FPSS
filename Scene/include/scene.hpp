@@ -15,8 +15,12 @@ private:
 	glm::mat4x4 PV;
 	RootNode* root;
 
-public:
+	static Scene* scene;
 	Scene();
+
+public:
+
+	static Scene* getInstance();
 
 	ISceneNode* findActor(unsigned int actorId);
 	bool addChild(unsigned int actorId, ISceneNode* node);
@@ -34,5 +38,6 @@ public:
 	void addModel(std::string objPath, std::shared_ptr<Model> m) { loadedModels.emplace(objPath, m); }
 	std::shared_ptr<Model> getModel(std::string objPath);
 
+	static void destruct();
 	~Scene();
 };

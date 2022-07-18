@@ -7,5 +7,5 @@ public:
 	RootNode();
 
 	virtual bool addChild(ISceneNode* node) override;
-	virtual void renderChildren(Scene& scene) override;
+	virtual void renderChildren() override;
 };

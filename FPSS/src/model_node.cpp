@@ -4,13 +4,15 @@
 #include "mesh.hpp"
 #include <glm\gtc\type_ptr.hpp>
 
-void ModelNode::preRender(Scene& scene) {
-	SceneNode::preRender(scene);
+void ModelNode::preRender() {
+	SceneNode::preRender();
 
-	std::shared_ptr<Model> m = scene.getModel(objPath);
+	Scene* scene = Scene::getInstance();
+
+	std::shared_ptr<Model> m = scene->getModel(objPath);
 	if (!m) {
 		m = std::make_shared<Model>(objPath, shaders);
-		scene.addModel(objPath, m);
+		scene->addModel(objPath, m);
 
 		BufferLayout mLayout;
 
@@ -24,9 +26,11 @@ void ModelNode::preRender(Scene& scene) {
 	}
 }
 
-void ModelNode::render(Scene& scene) {
-	std::shared_ptr<Model> model = scene.getModel(objPath);
-	const glm::mat4x4& pv = scene.getPVMatrix();
+void ModelNode::render() {
+	Scene* scene = Scene::getInstance();
+
+	std::shared_ptr<Model> model = scene->getModel(objPath);
+	const glm::mat4x4& pv = scene->getPVMatrix();
 	for (Mesh mesh : model->getMeshes()) {
 		const Shader& shader = mesh.getShader();
 		shader.bind();

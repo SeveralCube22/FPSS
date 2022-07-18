@@ -1,8 +1,19 @@
 #include "scene.hpp"
 
+Scene* Scene::scene;
 
 Scene::Scene() {
 	root = new RootNode();
+}
+
+Scene* Scene::getInstance() {
+	if (!scene)
+		scene = new Scene();
+	return scene;
+}
+
+void Scene::destruct() {
+	delete scene;
 }
 
 ISceneNode* Scene:: findActor(unsigned int actorId) {
@@ -29,15 +40,15 @@ bool Scene::removeChild(unsigned int actorId) {
 
 void Scene::Render() {
 	if (root) {
-		root->preRender(*this);
-		root->renderChildren(*this);
-		root->postRender(*this);
+		root->preRender();
+		root->renderChildren();
+		root->postRender();
 	}
 }
 
 void Scene::Update(float delta) {
 	if (root) 
-		root->onUpdate(*this, delta);
+		root->onUpdate(delta);
 }
 
 void Scene::pushMatrix(const glm::mat4x4& mat) {

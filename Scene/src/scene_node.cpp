@@ -13,27 +13,27 @@ void SceneNode::setParent(ISceneNode* parent) {
 	this->parent = parent;
 }
 
-void SceneNode::onUpdate(Scene& scene, float delta) {
+void SceneNode::onUpdate(float delta) {
 	for (ISceneNode* child : children)
-		child->onUpdate(scene, delta);
+		child->onUpdate(delta);
 }
 
-void SceneNode::preRender(Scene& scene) {
-	scene.pushMatrix(properties.toWorld);
+void SceneNode::preRender() {
+	Scene::getInstance()->pushMatrix(properties.toWorld);
 }
 
-void SceneNode::postRender(Scene& scene) {
-	scene.popMatrix();
+void SceneNode::postRender() {
+	Scene::getInstance()->popMatrix();
 }
 
-void SceneNode::renderChildren(Scene& scene) {
+void SceneNode::renderChildren() {
 	for (ISceneNode* child : children) {
-		child->preRender(scene);
-		if (child->isVisible(scene)) {
-			child->render(scene);
-			child->renderChildren(scene);
+		child->preRender();
+		if (child->isVisible()) {
+			child->render();
+			child->renderChildren();
 		}
-		child->postRender(scene);
+		child->postRender();
 	}
 }
 

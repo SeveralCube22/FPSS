@@ -84,7 +84,7 @@ const int WIDTH = 1920;
 const int HEIGHT = 1080;
 
 void processInput(GLFWwindow* window, Player& cam, float deltaTime); // process keyboard movement
-void loadScene(Scene& scene, const std::string& scenePath); // load scene file
+void loadScene(const std::string& scenePath); // load scene file
 
 int main(void)
 {
@@ -136,8 +136,8 @@ int main(void)
 
     glm::mat4 projection = glm::perspective(45.0f, WIDTH / (float)HEIGHT, 1.0f, 1000.0f);
 
-    Scene scene;
-    loadScene(scene, "res/scene/world.json");
+    Scene* scene = Scene::getInstance();
+    loadScene("res/scene/world.json");
 
     /* Loop until the user closes the window */
     while(!glfwWindowShouldClose(window))
@@ -167,13 +167,15 @@ int main(void)
 
         glm::mat4x4 view = player.lookAt();
         glm::mat4x4 pv = projection * view;
-        scene.setPVMatrix(pv);
-        scene.Render();
+        scene->setPVMatrix(pv);
+        scene->Render();
       
         /* Poll for and process events */
         glfwPollEvents();
     }
 
+    scene->destruct();
+    
     delete filePath;
     glfwTerminate();
     return 0;
@@ -194,7 +196,7 @@ void processInput(GLFWwindow* window, Player& cam, float deltaTime) {
         glfwDestroyWindow(window);
 }
 
-void loadScene(Scene& scene, const std::string& scenePath) {
+void loadScene(const std::string& scenePath) {
     std::ifstream ifs(scenePath);
     rapidjson::IStreamWrapper isw(ifs);
 
@@ -203,6 +205,6 @@ void loadScene(Scene& scene, const std::string& scenePath) {
 
     for (rapidjson::Value& model : doc["model"].GetArray()) {
         ModelNode* m = ModelNode::readJSON(model);
-        scene.addChild(m->getProperties()->getActorId(), m);
+        Scene::getInstance()->addChild(m->getProperties()->getActorId(), m);
     }
 }

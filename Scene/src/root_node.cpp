@@ -22,12 +22,12 @@ bool RootNode::addChild(ISceneNode* node) {
 	return false;
 }
 
-void RootNode::renderChildren(Scene& scene) {
+void RootNode::renderChildren() {
 	for (int pass = RenderPass_0; pass < RenderPass_Last; pass++) {
 		switch (pass) {
 		case RenderPass_Static:
 		case RenderPass_Dynamic:
-			children[pass]->renderChildren(scene);
+			children[pass]->renderChildren();
 			break;
 		}
 	}
