@@ -33,6 +33,9 @@
     <None Include="res\shaders\paint.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bounds\Bounds.vcxproj">
+      <Project>{8af4afff-1d55-4ecb-9b3d-ef1f8592998e}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Scene\Scene.vcxproj">
       <Project>{58b41b4b-fdc7-43d8-847d-d74006adfe4c}</Project>
     </ProjectReference>
@@ -95,7 +98,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\src\Visual Leak Detector\include;C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include</IncludePath>
+    <IncludePath>C:\src\Visual Leak Detector\include;C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include;$(SolutionDir)Bounds\include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
     <LibraryPath>$(LibraryPath)</LibraryPath>
@@ -108,7 +111,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\src\Visual Leak Detector\include;C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include</IncludePath>
+    <IncludePath>C:\src\Visual Leak Detector\include;C:\src\CGAL-5.4\include;$(IncludePath);$(ProjectDir)include;$(SolutionDir)Scene\include;$(SolutionDir)Utilities\include;$(SolutionDir)Bounds\include</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Configuration)\$(Platform)\</IntDir>
     <LibraryPath>$(LibraryPath)</LibraryPath>

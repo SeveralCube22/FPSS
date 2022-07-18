@@ -12,16 +12,17 @@ protected:
 	SceneNodeProperties properties;
 
 public:
-	SceneNode(unsigned int actorId, std::string name, RenderPass pass, const glm::mat4x4* to, const glm::mat4x4* from=nullptr) {
+	SceneNode(unsigned int actorId, std::string name, RenderPass pass, Bounds* bounds, glm::mat4x4 to, const glm::mat4x4* from=nullptr) {
 		parent = parent;
 		properties.actorId = actorId;
 		properties.name = name;
 		properties.renderPass = pass;
+		properties.bounds = bounds;
 		this->setTransform(to, from);
 	}
 
 	virtual const SceneNodeProperties* const getProperties() const override { return &properties; }
-	virtual void setTransform(const glm::mat4x4* to, const glm::mat4x4* from) override;
+	virtual void setTransform(glm::mat4x4 to, const glm::mat4x4* from) override;
 	virtual glm::mat4x4& getTransform() override { return properties.toWorld; }
 
 	virtual void setParent(ISceneNode* parent);

@@ -2,7 +2,7 @@
 
 #include <string>
 #include <glm/glm.hpp>
-
+#include <bounds.hpp>
 
 enum RenderPass {
 	RenderPass_0, // starting pass
@@ -20,7 +20,7 @@ private:
 	unsigned int actorId;
 	std::string name;
 	glm::mat4x4 toWorld, fromWorld;
-	// AABB or sphere radius compononent
+	Bounds* bounds;
 
 	RenderPass renderPass;
 
@@ -28,4 +28,9 @@ public:
 	unsigned int getActorId() const { return actorId; }
 	RenderPass getRenderPass() const { return renderPass; }
 	const glm::mat4x4& getTransform() const { return toWorld; }
+	const Bounds* getBounds() const { return bounds; }
+
+	~SceneNodeProperties() {
+		delete bounds;
+	}
 };

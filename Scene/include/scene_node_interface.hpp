@@ -8,7 +8,7 @@ class Scene;
 class ISceneNode {
 public:
 	virtual const SceneNodeProperties* const getProperties() const = 0;
-	virtual void setTransform(const glm::mat4x4* toWorld, const glm::mat4x4* fromWorld=nullptr) = 0; // sets this node's transform.
+	virtual void setTransform(glm::mat4x4 toWorld, const glm::mat4x4* fromWorld=nullptr) = 0; // sets this node's transform.
 	virtual glm::mat4x4& getTransform() = 0;
 
 	virtual void setParent(ISceneNode* parent) = 0;

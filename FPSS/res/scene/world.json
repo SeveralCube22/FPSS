@@ -10,7 +10,11 @@
 				"paint": "res/shaders/paint.glsl",
 				"default": "res/shaders/building.glsl"
 			},
-			"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ]
+			"transform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+			"aabb": {
+				"center": [ 0, 0, 0 ],
+				"size": 100
+			}
 		}
 	]
 }

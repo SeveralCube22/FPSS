@@ -3,6 +3,7 @@
 #include "model.hpp"
 #include "mesh.hpp"
 #include <glm\gtc\type_ptr.hpp>
+#include <aabb.hpp>
 
 void ModelNode::preRender() {
 	SceneNode::preRender();
@@ -53,7 +54,20 @@ ModelNode* ModelNode::readJSON(const rapidjson::Value& object) {
 	std::map<std::string, Shader> shaders = getShaders(object["shaders"]);
 	glm::mat4x4 to = getTransform(object["transform"]);
 
-	return new ModelNode(actorId, name, renderPass, to, objPath, shaders);
+	/*
+		TODO: For now assuming, all model nodes will have AABB. In the future, json file will generic bounds.
+			  So in world.json, 
+			  Bounds {
+				type: Bound Type(AABB, Sphere, etc.)
+				data: {
+					data specific to bound type
+				}
+	*/
+	const rapidjson::Value& aabbVal = object["aabb"];
+	glm::vec3 center = convertToVec(aabbVal["center"]);
+	float size = aabbVal["size"].GetFloat();
+
+	return new ModelNode(actorId, name, renderPass, to, objPath, shaders, new AABB(center, size));
 }
 
 RenderPass ModelNode::getRenderPass(const std::string& pass) {
@@ -77,4 +91,11 @@ glm::mat4x4 ModelNode::getTransform(const rapidjson::Value& arr) {
 	for (auto& v : arr.GetArray())
 		vals.push_back(v.GetFloat());
 	return glm::make_mat4x4(&vals[0]);
+}
+
+glm::vec3 ModelNode::convertToVec(const rapidjson::Value& arr) {
+	std::vector<float> vals;
+	for (auto& v : arr.GetArray())
+		vals.push_back(v.GetFloat());
+	return glm::make_vec3(&vals[0]);
 }

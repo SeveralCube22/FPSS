@@ -1,12 +1,12 @@
 #include "scene_node.hpp"
 #include "scene.hpp"
 
-void SceneNode::setTransform(const glm::mat4x4* to, const glm::mat4x4* from) {
-	properties.toWorld = *to;
+void SceneNode::setTransform(glm::mat4x4 to, const glm::mat4x4* from) {
+	properties.toWorld = to;
 	if (from)
 		properties.fromWorld = *from;
 	else
-		properties.fromWorld = glm::inverse(*to);
+		properties.fromWorld = glm::inverse(to);
 }
 
 void SceneNode::setParent(ISceneNode* parent) {
