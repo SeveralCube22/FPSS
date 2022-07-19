@@ -75,5 +75,6 @@ std::shared_ptr<Model> Scene::getModel(std::string objPath) {
 }
 
 Scene::~Scene() {
+	delete tree;
 	delete root;
  }

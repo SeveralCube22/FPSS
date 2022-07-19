@@ -6,6 +6,8 @@
 #include <string>
 #include <model.hpp>
 #include "root_node.hpp"
+#include "octree.hpp"
+#include "frustrum.hpp"
 
 class Scene {
 private:
@@ -14,6 +16,7 @@ private:
 	std::vector<glm::mat4x4> transformations;
 	glm::mat4x4 PV;
 	RootNode* root;
+	Octree* tree;
 
 	static Scene* scene;
 	Scene();
@@ -21,7 +24,11 @@ private:
 public:
 
 	static Scene* getInstance();
-
+	
+	void initOctree(AABB bounds, int minSize, int maxObjects, float looseness) {
+		scene->tree = new Octree(bounds, minSize, maxObjects, looseness);
+	}
+	Octree* getOctree() { return tree; }
 	ISceneNode* findActor(unsigned int actorId);
 	bool addChild(unsigned int actorId, ISceneNode* node);
 	bool removeChild(unsigned int actorId);
@@ -31,6 +38,9 @@ public:
 
 	void setPVMatrix(const glm::mat4x4& pv) { this->PV = pv; }
 	const glm::mat4x4& getPVMatrix() { return PV; }
+	Frustrum getViewBounds() {
+		return Frustrum(this->getPVMatrix());
+	}
 
 	void pushMatrix(const glm::mat4x4& mat);
 	const glm::mat4x4& popMatrix();

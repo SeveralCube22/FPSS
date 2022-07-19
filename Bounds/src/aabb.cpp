@@ -4,9 +4,9 @@
 
 bool AABB::intersects(const Bounds* o) const {
 	std::string type = Bounds::getType(o);
-	if (type == "AABB")
+	if (type == "class AABB")
 		return aabbIntersectsAABB(*this, *(dynamic_cast<const AABB*>(o)));
-	else if (type == "Frustrum")
+	else if (type == "class Frustrum")
 		return aabbIntersectsFrustrum(*this, *(dynamic_cast<const Frustrum*>(o)));
 	throw std::string("Unsupported encapsulation");
 }

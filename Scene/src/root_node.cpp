@@ -1,10 +1,11 @@
 #include "root_node.hpp"
 #include "aabb.hpp"
+#include "octree_node.hpp"
 #include <iostream>
 
 RootNode::RootNode() : SceneNode(0, "Root", RenderPass_0, new AABB(), glm::mat4x4(1.0f)) {
 	glm::mat4x4 identity(1.0f);
-	SceneNode* staticGroup = new SceneNode(UINT_MAX, "Static", RenderPass_Static, new AABB(), identity);
+	OctreeNode* staticGroup = new OctreeNode("Static");
 	SceneNode* dynamicGroup = new SceneNode(UINT_MAX, "Dynamic", RenderPass_Dynamic, new AABB(), identity);
 
 	staticGroup->setParent(this);

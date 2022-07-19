@@ -1,14 +1,14 @@
 #include "octree.hpp"
 #include "scene_node_properties.hpp"
 
-Octree::Octree(AABB bounds, int minSize, int maxObjects, float loosness) {
+Octree::Octree(AABB bounds, int minSize, int maxObjects, float looseness) : minSize(minSize), maxObjects(maxObjects), looseness(looseness) {
 	root = new Node();
 	root->bounds = AABB(bounds.getCenter(), looseness * bounds.getSize());
 }
 
 bool Octree::insert(ISceneNode* data) {
 	if (root->bounds.intersects(data->getProperties()->getBounds())) { // unnecessary check since box of the root will cover the entire scene
-		insertHelper(root, data);
+		return insertHelper(root, data);
 	}
 	return false;
 }

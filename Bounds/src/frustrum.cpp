@@ -29,7 +29,7 @@ Plane Frustrum::createPlane(const glm::vec4& m1, const glm::vec4& m2, bool add) 
 
 bool Frustrum::intersects(const Bounds* o) const {
 	std::string type = Bounds::getType(o);
-	if (type == "AABB")
+	if (type == "class AABB")
 		return aabbIntersectsFrustrum(*(dynamic_cast<const AABB*>(o)), *this);
 	throw std::string("Unsupported encapsulation");
 }

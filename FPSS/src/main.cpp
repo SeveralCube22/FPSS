@@ -137,6 +137,7 @@ int main(void)
     glm::mat4 projection = glm::perspective(45.0f, WIDTH / (float)HEIGHT, 1.0f, 1000.0f);
 
     Scene* scene = Scene::getInstance();
+    scene->initOctree(AABB(glm::vec3(0, 0, 0), 1000), 500, 200, 0.20f);
     loadScene("res/scene/world.json");
 
     /* Loop until the user closes the window */
@@ -167,9 +168,10 @@ int main(void)
 
         glm::mat4x4 view = player.lookAt();
         glm::mat4x4 pv = projection * view;
+        
         scene->setPVMatrix(pv);
         scene->Render();
-      
+        
         /* Poll for and process events */
         glfwPollEvents();
     }
