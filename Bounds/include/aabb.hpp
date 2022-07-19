@@ -21,7 +21,6 @@ public:
 		max = center + extents;
 	}
 
-	glm::vec3 getCenter() const { return center; }
 	glm::vec3 getExtents() const { return extents; }
 	glm::vec3 getMin() const { return min; }
 	glm::vec3 getMax() const { return max; }
@@ -29,4 +28,5 @@ public:
 
 	virtual bool intersects(const Bounds* o) const override;
 	virtual bool contains(const glm::vec3& point) const override;
+	virtual glm::vec3 getCenter() const override { return center; }
 };

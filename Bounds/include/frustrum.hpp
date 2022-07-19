@@ -14,6 +14,9 @@ public:
 	
 	virtual bool intersects(const Bounds* o) const override;
 	virtual bool contains(const glm::vec3& point) const;
-	
+	virtual glm::vec3 getCenter() const override {
+		throw std::string("Unsupported Frustrum operaton");
+	}
+
 	std::vector<Plane> getPlanes() const { return planes; }
 };

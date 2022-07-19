@@ -21,4 +21,7 @@ public:
 
 	virtual bool intersects(const Bounds* o) const override;
 	virtual bool contains(const glm::vec3& point) const override { return getDistanceFromPlane(point) == 0; }
+	virtual glm::vec3 getCenter() const override {
+		throw std::string("Unsupported Plane operaton");
+	}
 };

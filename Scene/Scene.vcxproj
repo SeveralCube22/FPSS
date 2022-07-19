@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\octree.hpp" />
     <ClInclude Include="include\root_node.hpp" />
     <ClInclude Include="include\scene.hpp" />
     <ClInclude Include="include\scene_node.hpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="include\scene_node_properties.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\octree.cpp" />
     <ClCompile Include="src\root_node.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\scene_node.cpp" />

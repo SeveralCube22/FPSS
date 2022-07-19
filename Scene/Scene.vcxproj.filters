@@ -30,6 +30,9 @@
     <ClInclude Include="include\root_node.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\octree.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\scene_node.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\root_node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\octree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
