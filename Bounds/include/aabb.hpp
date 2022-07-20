@@ -15,9 +15,8 @@ private:
 public:
 	AABB() {}
 	
-	AABB(const AABB& other) {
-		AABB(other.center, other.size);
-	}
+	AABB(const AABB& other) : AABB(other.center, other.size)
+	{}
 
 	AABB(glm::vec3 center, float size) : center(center), size(size) {
 		float half = size / 2;

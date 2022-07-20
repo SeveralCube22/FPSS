@@ -137,7 +137,8 @@ int main(void)
     glm::mat4 projection = glm::perspective(45.0f, WIDTH / (float)HEIGHT, 1.0f, 1000.0f);
 
     Scene* scene = Scene::getInstance();
-    scene->initOctree(AABB(glm::vec3(0, 0, 0), 1000), 500, 200, 0.20f);
+    scene->initOctree(AABB(glm::vec3(0, 0, 0), 10000), 500, 200, 0.20f);
+
     loadScene("res/scene/world.json");
 
     /* Loop until the user closes the window */
