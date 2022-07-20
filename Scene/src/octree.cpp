@@ -57,14 +57,13 @@ Octree::Region Octree::findOctant(Node* node, const Bounds* bounds) {
 }
 
 void Octree::split(Node* node) {
-	node->children = new std::vector<Node*>(8); // 8 children because octree. each node will have 8 children representing the 8 diff octants
+	node->children = new std::vector<Node*>(); 
 	glm::vec3 center = node->bounds.getCenter();
 	glm::vec3 newCenterExtents = node->bounds.getExtents() * .5f;
 
-	float size = looseness * node->bounds.getSize() / (2 * looseness); // same thing as getSize() / 2. 
-																	  // the original root already incorporates loosness value. writing like this for readability
+	float size = looseness * node->bounds.getSize() / 2; 
 
-	for (int i = 0; i < 8; i++) {
+	for (int i = 0; i < 8; i++) { // 8 children because octree. each node will have 8 children representing the 8 diff octants
 		Node* c = new Node();
 		glm::vec3 direction;
 
