@@ -38,8 +38,8 @@ public:
 
 	void setPVMatrix(const glm::mat4x4& pv) { this->PV = pv; }
 	const glm::mat4x4& getPVMatrix() { return PV; }
-	Frustrum getViewBounds() {
-		return Frustrum(this->getPVMatrix());
+	Frustum getViewBounds() {
+		return Frustum(this->getPVMatrix());
 	}
 
 	void pushMatrix(const glm::mat4x4& mat);

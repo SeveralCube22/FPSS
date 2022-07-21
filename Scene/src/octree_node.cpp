@@ -15,7 +15,7 @@ bool OctreeNode::addChild(ISceneNode* node) {
 
 void OctreeNode::renderChildren() {
 	Scene* scene = Scene::getInstance();
-	Frustrum view = scene->getViewBounds();
+	Frustum view = scene->getViewBounds();
 	//std::map<std::string, std::vector<ModelNode*>> visible;
 	std::cout << "Rendered: ";
 	renderChildrenHelper(scene->getOctree()->getRoot(), view);
@@ -31,7 +31,7 @@ void OctreeNode::renderChildren() {
 	//}
 }
 
-void OctreeNode::renderChildrenHelper(Octree::Node* node, const Frustrum& view) {
+void OctreeNode::renderChildrenHelper(Octree::Node* node, const Frustum& view) {
 	if (node->bounds.intersects(&view)) {
 		if (node->data) // render all the objects that this node has
 			for (int i = 0; i < node->data->size(); i++) {
@@ -44,13 +44,15 @@ void OctreeNode::renderChildrenHelper(Octree::Node* node, const Frustrum& view) 
 				}
 				else
 					visible[name].push_back(dynamic_cast<ModelNode*>(data));*/
-				data->preRender();
-				data->render();
-				data->postRender();
-				count++;
+				if (data->getProperties()->getBounds()->intersects(&view)) {
+					data->preRender();
+					data->render();
+					data->postRender();
+					count++;
+				}
 			}
 
-		// check which octant cubes are being intersected with view frustrum and render those cubes. 
+		// check which octant cubes are being intersected with view Frustum and render those cubes. 
 		if (node->children)
 			for (int i = 0; i < node->children->size(); i++)
 				renderChildrenHelper(node->children->at(i), view);

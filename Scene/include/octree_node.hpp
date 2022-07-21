@@ -7,7 +7,7 @@
 
 class OctreeNode : public SceneNode {
 private:
-	void renderChildrenHelper(Octree::Node* node, const Frustrum& view);
+	void renderChildrenHelper(Octree::Node* node, const Frustum& view);
 
 public:
 	OctreeNode(std::string name) : SceneNode(UINT_MAX, name, RenderPass_Static, new AABB(), glm::mat4x4(1.0f))
