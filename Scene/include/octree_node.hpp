@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "scene_node.hpp"
-#include "frustrum.hpp"
+#include "frustum.hpp"
 #include "octree.hpp"
 
 class OctreeNode : public SceneNode {

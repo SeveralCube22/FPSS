@@ -7,7 +7,7 @@
 #include <model.hpp>
 #include "root_node.hpp"
 #include "octree.hpp"
-#include "frustrum.hpp"
+#include "frustum.hpp"
 
 class Scene {
 private:

@@ -154,13 +154,13 @@
     <ClInclude Include="include\aabb.hpp" />
     <ClInclude Include="include\bounds.hpp" />
     <ClInclude Include="include\bounds_helpers.hpp" />
-    <ClInclude Include="include\frustrum.hpp" />
+    <ClInclude Include="include\frustum.hpp" />
     <ClInclude Include="include\plane.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\aabb.cpp" />
     <ClCompile Include="src\bounds_helpers.cpp" />
-    <ClCompile Include="src\frustrum.cpp" />
+    <ClCompile Include="src\frustum.cpp" />
     <ClCompile Include="src\plane.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

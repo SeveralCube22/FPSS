@@ -11,8 +11,9 @@ bool aabbIntersectsPlane(const AABB& o1, const Plane& o2) {
 	return std::abs(o2.getDistanceFromPlane(o1.getCenter())) <= r;
 }
 
-
-
-bool aabbIntersectsFrustrum(const AABB& o1, const Frustum& o2) {
-	return o2.IsBoxVisible(o1.getMin(), o1.getMax());
+bool aabbIntersectsFrustum(const AABB& o1, const Frustum& o2) {
+	for (const Plane& plane : o2.getPlanes())
+		if (aabbIntersectsPlane(o1, plane))
+			return true;
+	return false;
 }

@@ -1,5 +1,5 @@
 #include "aabb.hpp"
-#include "frustrum.hpp"
+#include "frustum.hpp"
 #include "bounds_helpers.hpp"
 
 bool AABB::intersects(const Bounds* o) const {
@@ -7,7 +7,7 @@ bool AABB::intersects(const Bounds* o) const {
 	if (type == "class AABB")
 		return aabbIntersectsAABB(*this, *(dynamic_cast<const AABB*>(o)));
 	else if (type == "class Frustum")
-		return aabbIntersectsFrustrum(*this, *(dynamic_cast<const Frustum*>(o)));
+		return aabbIntersectsFrustum(*this, *(dynamic_cast<const Frustum*>(o)));
 	throw std::string("Unsupported encapsulation");
 }
 
