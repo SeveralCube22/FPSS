@@ -17,7 +17,7 @@
 			}
 		},
 		{
-			"actorId": 1,
+			"actorId": 2,
 			"name": "Mass_Hall",
 			"renderPass": "STATIC",
 			"objPath": "res/objects/buildings/Mass_Hall/Mass_Hall.obj",
@@ -26,9 +26,9 @@
 				"paint": "res/shaders/paint.glsl",
 				"default": "res/shaders/building.glsl"
 			},
-			"transform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 500, 0, 0, 1 ],
+			"transform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 100, 0, 0, 1 ],
 			"aabb": {
-				"center": [ 500, 0, 0 ],
+				"center": [ 100, 0, 0 ],
 				"size": 100
 			}
 		}

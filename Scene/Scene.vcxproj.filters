@@ -36,6 +36,12 @@
     <ClInclude Include="include\octree_node.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\instance_node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model_node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\scene_node.cpp">
@@ -51,6 +57,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\octree_node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\instance_node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model_node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

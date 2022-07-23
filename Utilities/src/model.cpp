@@ -154,6 +154,7 @@ unsigned int Model::loadTexFromFile(const char* path, const std::string& directo
 
 void Model::setTransforms(std::vector<glm::mat4x4>& transforms) {
     transformBuffer.addData(transforms.data(), transforms.size() * sizeof(glm::mat4x4), GL_STATIC_DRAW); // addData uses memcpy so existing data is overwritten
+    numTransforms = transforms.size();
 }
 
 void Model::draw(const glm::mat4x4& pv) {
@@ -164,7 +165,8 @@ void Model::draw(const glm::mat4x4& pv) {
         glUniformMatrix4fv(pvId, 1, GL_FALSE, glm::value_ptr(pv[0]));
 
         mesh.setMesh(); // mesh will bind vertices, indices, and textures
-        glDrawElementsInstanced(GL_TRIANGLES, mesh.getIndicesSize(), GL_UNSIGNED_INT, (void*)0, 1); // draw the only one model
+
+        glDrawElementsInstanced(GL_TRIANGLES, mesh.getIndicesSize(), GL_UNSIGNED_INT, (void*)0, numTransforms); // draw the only one model
 
         mesh.reset();
         shader.unbind();

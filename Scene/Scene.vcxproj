@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\instance_node.hpp" />
+    <ClInclude Include="include\model_node.hpp" />
     <ClInclude Include="include\octree.hpp" />
     <ClInclude Include="include\octree_node.hpp" />
     <ClInclude Include="include\root_node.hpp" />
@@ -160,6 +162,8 @@
     <ClInclude Include="include\scene_node_properties.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\instance_node.cpp" />
+    <ClCompile Include="src\model_node.cpp" />
     <ClCompile Include="src\octree.cpp" />
     <ClCompile Include="src\octree_node.cpp" />
     <ClCompile Include="src\root_node.cpp" />

@@ -30,6 +30,7 @@ public:
 	void deleteBuffer() {
 		glDeleteBuffers(1, &id);
 	}
+
 };
 
 template<typename T>
@@ -38,9 +39,11 @@ void Buffer::addData(T* data, size_t size, GLenum usage) {
 	glBufferData(type, size, nullptr, usage);
 	
 	T* bufferData = this->mapBuffer<T>(GL_WRITE_ONLY);
-	memcpy(bufferData, data, size);
+	if (bufferData != nullptr) {
+		memcpy(bufferData, data, size);
+		this->unMapBuffer();
+	}
 	
-	this->unMapBuffer();
 	this->unbind();
 }
 
@@ -51,4 +54,5 @@ T* Buffer::mapBuffer(GLenum access) {
 	this->unbind();
 	return (T*)data;
 }
+
 

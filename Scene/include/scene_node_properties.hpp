@@ -29,7 +29,7 @@ public:
 	RenderPass getRenderPass() const { return renderPass; }
 	const glm::mat4x4& getTransform() const { return toWorld; }
 	const Bounds* getBounds() const { return bounds; }
-
+	std::string getName() const { return name; }
 	~SceneNodeProperties() {
 		delete bounds;
 	}

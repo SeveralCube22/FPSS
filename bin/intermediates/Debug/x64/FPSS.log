@@ -1,6 +1,9 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿  main.cpp
+C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(155,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(156,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(157,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(160,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(161,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
      Creating library C:\Users\manam\Desktop\Repo\FPSS\bin\Debug\x64\FPSS.lib and object C:\Users\manam\Desktop\Repo\FPSS\bin\Debug\x64\FPSS.exp
   FPSS.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\bin\Debug\x64\FPSS.exe

@@ -1,2 +1,0 @@
-Severity: notification  GL CALLBACK:  type = 0x8251, message = Buffer detailed info: Buffer object 1 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW) will use VIDEO memory as the source for buffer object operations.
-Severity: notification  GL CALLBACK:  type = 0x8251, message = Buffer detailed info: Buffer object 1 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW) has been mapped in HOST memory.

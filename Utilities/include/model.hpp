@@ -19,7 +19,8 @@ private:
 	std::string objPath;
 
 	std::map<std::string, Texture> textures_loaded;
-	Buffer transformBuffer; // Model 
+	Buffer transformBuffer; 
+	int numTransforms;
 
 	void loadModel();
 	void processNode(aiNode* node, const aiScene* scene);
