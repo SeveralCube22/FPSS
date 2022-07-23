@@ -20,6 +20,15 @@ private:
 		std::vector<ISceneNode*>* data;
 		AABB bounds;
 		std::vector<Node*>* children;
+
+		~Node() {
+			delete data;
+			if (children != nullptr) {
+				for (Node* node : *children)
+					delete node;
+			}
+			delete children;
+		}
 	};
 	Node* root;
 	int minSize;
@@ -34,6 +43,10 @@ public:
 	Octree(AABB bounds, int minSize, int maxObjects, float loosness);
 	bool insert(ISceneNode* data);
 	Node* getRoot() { return root; }
+
+	~Octree() {
+		delete root;
+	}
 
 	friend class OctreeNode;
 };

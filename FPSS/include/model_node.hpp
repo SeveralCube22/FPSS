@@ -11,7 +11,7 @@ class ModelNode : public SceneNode {
 private:
 	std::string objPath;
 	std::map<std::string, Shader> shaders;
-	Buffer modelBuffer;
+	std::vector<glm::mat4x4> transforms;
 
 	static RenderPass getRenderPass(const std::string& pass);
 	static std::map<std::string, Shader> getShaders(const rapidjson::Value& obj);
@@ -21,10 +21,9 @@ private:
 public:
 	ModelNode(unsigned int actorId, std::string name, RenderPass pass, glm::mat4x4 to,
 		std::string objPath, const std::map<std::string, Shader> shaders, Bounds* bounds) : SceneNode(actorId, name, pass, bounds, to),
-		objPath(objPath), shaders(shaders), modelBuffer(GL_ARRAY_BUFFER) 
+		objPath(objPath), shaders(shaders)
 	{
-		std::vector<glm::mat4x4> model = { properties.getTransform() };
-		modelBuffer.addData(model.data(), 1 * sizeof(glm::mat4x4), GL_STATIC_DRAW);
+		transforms.push_back(properties.getTransform());
 	}
 
 	virtual void preRender() override;

@@ -19,4 +19,8 @@ public:
 	
 	void bind() const;
 	void unbind() const;
+
+	void deleteVertexArray() {
+		glDeleteVertexArrays(1, &id);
+	}
 };

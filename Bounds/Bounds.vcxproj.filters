@@ -24,7 +24,7 @@
     <ClInclude Include="include\bounds_helpers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\frustum.hpp">
+    <ClInclude Include="include\frustrum.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\plane.hpp">
@@ -39,9 +39,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\plane.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\frustum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
