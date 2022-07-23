@@ -3,6 +3,7 @@
 #include <glm/matrix.hpp>
 #include "bounds.hpp"
 
+// Frustum code from https://gist.github.com/podgorskiy/e698d18879588ada9014768e3e82a644
 class Frustum : public Bounds
 {
 public:

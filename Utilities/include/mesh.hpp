@@ -35,4 +35,10 @@ public:
 	void setMesh();
 	void reset();
 	int getIndicesSize() { return indices.size(); }
+	
+	void deleteBuffers() {
+		verticesBuf.deleteBuffer();
+		indicesBuf.deleteBuffer();
+		vao.deleteVertexArray();
+	}
 };

@@ -13,17 +13,8 @@ void ModelNode::preRender() {
 	std::shared_ptr<Model> m = scene->getModel(objPath);
 	if (!m) {
 		m = std::make_shared<Model>(objPath, shaders);
+		m->setTransforms(transforms);
 		scene->addModel(objPath, m);
-
-		BufferLayout mLayout;
-
-		for (int i = 0; i < 4; i++) // per instance vertex attrib layout
-			mLayout.addElement(4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), sizeof(glm::vec4) * i, 1);
-
-		for (Mesh mesh : m->getMeshes()) {
-			VertexArray& vao = mesh.getVAO();
-			vao.addBufferLayout({ modelBuffer }, { mLayout });
-		}
 	}
 }
 
@@ -32,18 +23,7 @@ void ModelNode::render() {
 
 	std::shared_ptr<Model> model = scene->getModel(objPath);
 	const glm::mat4x4& pv = scene->getPVMatrix();
-	for (Mesh mesh : model->getMeshes()) {
-		const Shader& shader = mesh.getShader();
-		shader.bind();
-		unsigned int pvId = shader.getUniformLocation("PV");
-		glUniformMatrix4fv(pvId, 1, GL_FALSE, glm::value_ptr(pv[0]));
-
-		mesh.setMesh(); // mesh will bind vertices, indices, and textures
-		glDrawElementsInstanced(GL_TRIANGLES, mesh.getIndicesSize(), GL_UNSIGNED_INT, (void*)0, 1); // draw the only one model
-		
-		mesh.reset();
-		shader.unbind();
-	}
+	model->draw(pv);
 }
 
 ModelNode* ModelNode::readJSON(const rapidjson::Value& object) {

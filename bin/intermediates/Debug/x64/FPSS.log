@@ -1,1 +1,11 @@
-﻿  FPSS.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\bin\Debug\x64\FPSS.exe
+﻿  main.cpp
+C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(155,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(156,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(157,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(160,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(161,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  model_node.cpp
+C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  FPSS.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\bin\Debug\x64\FPSS.exe

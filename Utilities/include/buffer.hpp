@@ -26,6 +26,10 @@ public:
 
 	template<typename T>
 	T* mapBuffer(GLenum access);
+
+	void deleteBuffer() {
+		glDeleteBuffers(1, &id);
+	}
 };
 
 template<typename T>

@@ -160,7 +160,6 @@
   <ItemGroup>
     <ClCompile Include="src\aabb.cpp" />
     <ClCompile Include="src\bounds_helpers.cpp" />
-    <ClCompile Include="src\frustrum.cpp" />
     <ClCompile Include="src\plane.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

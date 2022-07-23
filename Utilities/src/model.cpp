@@ -1,4 +1,5 @@
 #include "model.hpp"
+#include <glm\gtc\type_ptr.hpp>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -149,4 +150,23 @@ unsigned int Model::loadTexFromFile(const char* path, const std::string& directo
     }
 
     return textureID;
+}
+
+void Model::setTransforms(std::vector<glm::mat4x4>& transforms) {
+    transformBuffer.addData(transforms.data(), transforms.size() * sizeof(glm::mat4x4), GL_STATIC_DRAW); // addData uses memcpy so existing data is overwritten
+}
+
+void Model::draw(const glm::mat4x4& pv) {
+    for (Mesh mesh :meshes) {
+        const Shader& shader = mesh.getShader();
+        shader.bind();
+        unsigned int pvId = shader.getUniformLocation("PV");
+        glUniformMatrix4fv(pvId, 1, GL_FALSE, glm::value_ptr(pv[0]));
+
+        mesh.setMesh(); // mesh will bind vertices, indices, and textures
+        glDrawElementsInstanced(GL_TRIANGLES, mesh.getIndicesSize(), GL_UNSIGNED_INT, (void*)0, 1); // draw the only one model
+
+        mesh.reset();
+        shader.unbind();
+    }
 }
