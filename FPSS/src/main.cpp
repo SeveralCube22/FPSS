@@ -26,7 +26,9 @@
 #include "scene.hpp"
 #include "model_node.hpp"
 
+#ifdef _DEBUG
 #include <vld.h>
+#endif
 
 // use Nvidia's drivers instead of Intel
 extern "C"
@@ -117,7 +119,7 @@ int main(void)
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
-
+    
     // BEGIN OPENGL CONFIGURATIONS
 
     glEnable(GL_DEBUG_OUTPUT);
@@ -196,7 +198,7 @@ void processInput(GLFWwindow* window, Player& cam, float deltaTime) {
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
         cam.jump(50.0f);
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwDestroyWindow(window);
+        glfwSetWindowShouldClose(window, GL_TRUE);
 }
 
 void loadScene(const std::string& scenePath) {

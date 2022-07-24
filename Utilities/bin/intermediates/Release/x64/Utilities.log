@@ -9,9 +9,10 @@ C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\mesh.cpp(12,48): warning C4244: '
 C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\mesh.cpp(13,48): warning C4244: 'argument': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
   model.cpp
 C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\model.cpp(34,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\model.cpp(63,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\model.cpp(86,36): warning C4101: 'oor': unreferenced local variable
+C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\model.cpp(35,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\model.cpp(64,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\model.cpp(87,36): warning C4101: 'oor': unreferenced local variable
+C:\Users\manam\Desktop\Repo\FPSS\Utilities\src\model.cpp(157,38): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   shader.cpp
   vertex_array.cpp
   Utilities.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\Utilities\bin\Release\x64\Utilities.lib

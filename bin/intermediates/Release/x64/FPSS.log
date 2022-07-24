@@ -2,10 +2,19 @@
 C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
 C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
 C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  main.cpp
+C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(157,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(158,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(159,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(162,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\FPSS\src\main.cpp(163,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
      Creating library C:\Users\manam\Desktop\Repo\FPSS\bin\Release\x64\FPSS.lib and object C:\Users\manam\Desktop\Repo\FPSS\bin\Release\x64\FPSS.exp
   Generating code
-  Previous IPDB not found, fall back to full compilation.
-C:\Users\manam\Desktop\Repo\FPSS\Scene\src\scene.cpp(54): warning C4172: returning address of local variable or temporary
-  All 1895 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  2 of 2173 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    10 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   FPSS.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\bin\Release\x64\FPSS.exe
