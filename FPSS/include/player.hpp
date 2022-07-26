@@ -23,6 +23,8 @@ public:
 	void jump(float vSpeed);
 	void calculateVertPos(float deltaTime);
 
+	glm::vec3 hit();
+
 	void incrementYaw(float xOffset);
 	void incrementPitch(float yOffset);
 

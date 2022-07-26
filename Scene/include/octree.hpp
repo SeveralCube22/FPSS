@@ -36,13 +36,16 @@ private:
 	float looseness;
 
 	bool insertHelper(Node* node, ISceneNode* obj);
-	Region findOctant(Node* node, const Bounds* bounds);
+	Region findOctant(Node* node, glm::vec3 o);
 	void split(Node* node);
+	ISceneNode* getDataHelper(Node* node, glm::vec3 o);
+	ISceneNode* checkNodeData(Node* node, glm::vec3 o);
 
 public:
 	Octree(AABB bounds, int minSize, int maxObjects, float loosness);
 	bool insert(ISceneNode* data);
 	Node* getRoot() { return root; }
+	ISceneNode* getData(glm::vec3 point);
 
 	~Octree() {
 		delete root;

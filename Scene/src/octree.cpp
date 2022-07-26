@@ -1,5 +1,6 @@
 #include "octree.hpp"
 #include "scene_node_properties.hpp"
+#include <iostream>
 
 Octree::Octree(AABB bounds, int minSize, int maxObjects, float looseness) : minSize(minSize), maxObjects(maxObjects), looseness(looseness) {
 	root = new Node();
@@ -25,7 +26,7 @@ bool Octree::insertHelper(Node* node, ISceneNode* obj) {
 			split(node);
 			for (int i = 0; i < node->data->size(); i++) {  // move objects currently in this node to see if they fit in child nodes
 				ISceneNode* cObj = node->data->at(i);
-				int bestChild = findOctant(node, cObj->getProperties()->getBounds());
+				int bestChild = findOctant(node, cObj->getProperties()->getBounds()->getCenter());
 				Node* child = node->children->at(bestChild);
 				if (child->bounds.intersects(cObj->getProperties()->getBounds())) {
 					insertHelper(child, cObj);
@@ -35,7 +36,7 @@ bool Octree::insertHelper(Node* node, ISceneNode* obj) {
 		}
 	}
 
-	int bestChild = findOctant(node, obj->getProperties()->getBounds());
+	int bestChild = findOctant(node, obj->getProperties()->getBounds()->getCenter());
 	Node* child = node->children->at(bestChild);
 	if (child->bounds.intersects(obj->getProperties()->getBounds()))
 		return insertHelper(child, obj);
@@ -45,9 +46,9 @@ bool Octree::insertHelper(Node* node, ISceneNode* obj) {
 	}
 }
 
-Octree::Region Octree::findOctant(Node* node, const Bounds* bounds) {
+Octree::Region Octree::findOctant(Node* node, glm::vec3 o) {
 	glm::vec3 n = node->bounds.getCenter();
-	glm::vec3 o = bounds->getCenter();
+
 	int index = 0;
 	index += o.z <= n.z ? 0 : 1;
 	index += o.x <= n.x ? 0 : 2;
@@ -77,4 +78,33 @@ void Octree::split(Node* node) {
 		c->bounds = AABB(nCenter, size);
 		node->children->push_back(c);
 	}
+}
+
+ISceneNode* Octree::getData(glm::vec3 point) {
+	return getDataHelper(root, point);
+}
+
+ISceneNode* Octree::checkNodeData(Node* node, glm::vec3 o) {
+	for (int i = 0; i < node->data->size(); i++) {
+		if (node->data->at(i)->getProperties()->getBounds()->contains(o))
+			return node->data->at(i);
+	}
+	return nullptr;
+}
+
+ISceneNode* Octree::getDataHelper(Node* node, glm::vec3 o) {
+	ISceneNode* data = nullptr;
+	if (node->data)
+		data = checkNodeData(node, o);
+
+	if (data)
+		return data;
+	else if (node->children) {
+		Region r = findOctant(node, o);
+		int p = r;
+		std::cout << p << std::endl;
+		return getDataHelper(node->children->at(r), o);
+	}
+	else
+		return nullptr;
 }

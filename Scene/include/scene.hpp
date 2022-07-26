@@ -49,5 +49,8 @@ public:
 	std::shared_ptr<Model> getModel(std::string objPath);
 
 	static void destruct();
+
+	ISceneNode* getCollison(glm::vec3 point);
+
 	~Scene();
 };

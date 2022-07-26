@@ -13,6 +13,7 @@
 #include <rapidjson/document.h>
 #include <rapidjson/istreamwrapper.h>
 #include <fstream>
+#include <filesystem>
 
 #include <chrono>
 #include <sstream>
@@ -88,7 +89,7 @@ const int HEIGHT = 1080;
 void processInput(GLFWwindow* window, Player& cam, float deltaTime); // process keyboard movement
 void loadScene(const std::string& scenePath); // load scene file
 
-int main(void)
+int main(int argc, char** argv)
 {
     // Configurations
 
@@ -199,6 +200,16 @@ void processInput(GLFWwindow* window, Player& cam, float deltaTime) {
         cam.jump(50.0f);
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
+    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
+        std::cout << "IN MOUSE ";
+        glm::vec3 p = cam.hit();
+        std::cout << " POINT(" << p.x << ", " << p.y << ", " << p.z << ")" << std::endl;
+        ISceneNode* n = Scene::getInstance()->getCollison(p);
+        if (n)
+            std::cout << "HIT " << n->getProperties()->getName() << std::endl;
+        else
+            std::cout << "HIT NOTHING" << std::endl;
+    }
 }
 
 void loadScene(const std::string& scenePath) {

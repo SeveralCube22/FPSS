@@ -74,6 +74,10 @@ std::shared_ptr<Model> Scene::getModel(std::string objPath) {
 	return it == loadedModels.end() ? nullptr : it->second;
 }
 
+ISceneNode* Scene::getCollison(glm::vec3 point) {
+	return tree->getData(point);
+}
+
 Scene::~Scene() {
 	delete tree;
 	delete root;

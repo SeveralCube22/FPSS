@@ -1,7 +1,7 @@
 #include "mesh.hpp"
 
 
-void Mesh::setupBuffers() {
+void Mesh::setupBuffers(std::vector<Vertex> vertices, std::vector<unsigned int> indices) {
 	auto size = 2 * sizeof(glm::vec3) + 1 * sizeof(glm::vec2);
 
 	verticesBuf.addData<Vertex>(vertices.data(), vertices.size() * size, GL_STATIC_DRAW);
@@ -13,6 +13,7 @@ void Mesh::setupBuffers() {
 	verticesLayout.addElement(2, GL_FLOAT, false, size, offsetof(Vertex, Vertex::texCoords), 0);
 
 	vao.addBufferLayout({ verticesBuf }, { verticesLayout });
+	this->indicesSize = indices.size();
 }
 
 void Mesh::setMesh() {

@@ -1,15 +1,10 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
 C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  instance_node.cpp
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  model_node.cpp
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(499,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   octree.cpp
-C:\Users\manam\Desktop\Repo\FPSS\Scene\src\octree.cpp(71,23): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
 C:\Users\manam\Desktop\Repo\FPSS\Scene\src\octree.cpp(72,23): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
@@ -20,11 +15,9 @@ C:\Users\manam\Desktop\Repo\FPSS\Scene\src\octree.cpp(73,23): warning C4244: '='
           [
               T=float
           ]
-  octree_node.cpp
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  root_node.cpp
-  scene.cpp
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  scene_node.cpp
-C:\Users\manam\Desktop\Repo\FPSS\Utilities\include\mesh.hpp(37,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\manam\Desktop\Repo\FPSS\Scene\src\octree.cpp(74,23): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   Scene.vcxproj -> C:\Users\manam\Desktop\Repo\FPSS\Scene\bin\Release\x64\Scene.lib

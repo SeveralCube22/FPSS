@@ -63,3 +63,7 @@ glm::mat4 Player::lookAt() {
 	
 	return glm::lookAt(pos, pos + direction, up); 
 }
+
+glm::vec3 Player::hit() {
+	return pos + direction * 10.0f;
+}

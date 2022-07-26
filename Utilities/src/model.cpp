@@ -87,7 +87,9 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
     catch(const std::out_of_range& oor) { 
         shader = &shaders.at("default");
     }
-    return Mesh(vertices, indices, textures, *shader);
+    Mesh m(textures, *shader);
+    m.setupBuffers(vertices, indices);
+    return m;
 }
 
 std::vector<Texture> Model::loadMatTextures(aiMaterial* mat, aiTextureType type, TextureType texType)
